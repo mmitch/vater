@@ -15,5 +15,5 @@ $(BINARY): $(SOURCES)
 	$(VALAC) -o $(BINARY) $(VALAFLAGS) $(SOURCES)
 
 clean:
+	-rm -f $(BINARY)
 	-rm -f *~
-
