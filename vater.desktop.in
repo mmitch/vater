@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=vater
+Comment=Vala Terminal Emulator
+Exec=@prefix@/bin/vater
+Icon=application-default-icon
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GTK;Utility;
