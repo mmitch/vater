@@ -18,6 +18,9 @@ class Vater : GLib.Object {
 			null     /* child pid */
 			);
 		
+		/* individualization */
+		terminal.set_font( Pango.FontDescription.from_string( "Inconsolata 11" ) );
+
 		/* Connect some signals */
 		win.destroy.connect (Gtk.main_quit);
 		terminal.child_exited.connect( Gtk.main_quit);
