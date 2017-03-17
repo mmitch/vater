@@ -1,4 +1,8 @@
 class Vater : GLib.Object {
+	private static void setFont(Vte.Terminal terminal) {
+		terminal.set_font (Pango.FontDescription.from_string ("fixed regular 14px" ) );
+	}
+
 	public static int main(string[] args) {
 		/* Initialise GTK, and the window */
 		Gtk.init (ref args);
@@ -19,7 +23,7 @@ class Vater : GLib.Object {
 			);
 		
 		/* individualization */
-		terminal.set_font( Pango.FontDescription.from_string( "Inconsolata 11" ) );
+		setFont (terminal);
 
 		/* Connect some signals */
 		win.destroy.connect (Gtk.main_quit);

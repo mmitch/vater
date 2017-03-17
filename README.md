@@ -9,16 +9,45 @@ This is based on an idea from [Write your own terminal emulator] - in
 fact I converted the C code from there to Vala as a starting point.
 
 
+installation
+------------
+
+* just run `make`
+
+  it will compile `vater` and try to install it into `~/bin`, so you
+  should a) have that directory and b) have it in your `$PATH`
+
+* for bitmap fonts to work, you propably have to tweak your Fontconfig
+  settings
+
+  Bitmap fonts are mostly deactivated by default (eg. Ubuntu has
+  `/etc/fonts/conf.d/70-no-bitmaps.conf`).  Activating *all* the
+  bitmap fonts could lead to problems, so just activate the `fixed`
+  font family by creating a configuration file
+  `/etc/fonts/conf.d/99-enable-fixed-bitmap.conf` and run `fc-cache`
+  afterwards or restart your X session (based on [this idea]).
+
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <!-- Enable (efont) fixed bitmap fonts -->
+  <selectfont>
+    <acceptfont>
+      <pattern>
+        <patelt name="family">
+          <string>fixed</string>
+        </patelt>
+      </pattern>
+    </acceptfont>
+  </selectfont>
+</fontconfig>
+```
+
+
 bugs/todos
 ----------
 
-* no bitmap fonts available
-
-  I don't like anti-aliased fonts for terminal work, so I want my
-  bitmapped [efont] back.  VTE uses GTK3, GTK3 uses Pango, Pango uses
-  Fontconfig and Fontconfig seems to be the culprit here.  I will try
-  this: http://marklodato.github.io/2014/02/23/fixed-fonts.html
-  
 * clipboard selection problem
 
   Unlike xterm, VTE does not select a whole URL on double click, but
@@ -55,3 +84,4 @@ bugs/todos
 [Write your own terminal emulator]: https://vincent.bernat.im/en/blog/2017-write-own-terminal
 [efont]: http://openlab.ring.gr.jp/efont/unicode/
 [TravisCI]: https://travis-ci.org/
+[this idea]: http://marklodato.github.io/2014/02/23/fixed-fonts.html
