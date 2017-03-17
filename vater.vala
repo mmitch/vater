@@ -12,15 +12,20 @@ class Vater : GLib.Object {
 		
 		/* Start a new shell */
 		var command = GLib.Environment.get_variable ("SHELL");
-		terminal.spawn_sync (
-			Vte.PtyFlags.DEFAULT,
-			null,    /* working directory */
-			new string[] { command }, /* command */
-			null,    /* additional environment */
-			0,       /* spawn flags */
-			null,    /* child setup */
-			null     /* child pid */
-			);
+		try {
+			terminal.spawn_sync (
+				Vte.PtyFlags.DEFAULT,
+				null,    /* working directory */
+				new string[] { command }, /* command */
+				null,    /* additional environment */
+				0,       /* spawn flags */
+				null,    /* child setup */
+				null     /* child pid */
+				);
+		} catch (GLib.Error e) {
+			stderr.printf ("Error: %s\n", e.message);
+			return 1;
+		}
 		
 		/* individualization */
 		setFont (terminal);
