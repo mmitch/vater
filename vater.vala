@@ -27,7 +27,7 @@ class Vater : GLib.Object {
 
 		/* Connect some signals */
 		win.destroy.connect (Gtk.main_quit);
-		terminal.child_exited.connect( Gtk.main_quit);
+		terminal.child_exited.connect (Gtk.main_quit);
 		
 		/* Put widgets together and run the main loop */
 		win.add (terminal);
