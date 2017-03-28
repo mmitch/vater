@@ -48,13 +48,6 @@ installation
 bugs/todos
 ----------
 
-* clipboard selection problem
-
-  Unlike xterm, VTE does not select a whole URL on double click, but
-  stops at the colon, so I either select the protocol path (`http`) or
-  everything else (`//example.org`).  This is not acceptable.  I must
-  find a way to remove `:` from being a word delimiter.
-
 * clipboard paste problem
 
   Over SSH, I was only able to paste the first line of several lines

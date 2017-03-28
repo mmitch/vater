@@ -3,6 +3,10 @@ class Vater : GLib.Object {
 		terminal.set_font (Pango.FontDescription.from_string ("fixed regular 14px" ) );
 	}
 
+	private static void setWordSelection(Vte.Terminal terminal) {
+		terminal.set_word_char_exceptions ( "-/@_&.:?" );
+	}
+
 	public static int main(string[] args) {
 		/* Initialise GTK, and the window */
 		Gtk.init (ref args);
@@ -29,6 +33,7 @@ class Vater : GLib.Object {
 		
 		/* individualization */
 		setFont (terminal);
+		setWordSelection (terminal);
 
 		/* Connect some signals */
 		win.destroy.connect (Gtk.main_quit);
