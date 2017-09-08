@@ -44,6 +44,21 @@ installation
 </fontconfig>
 ```
 
+* to enable the `efont` bitmap font family, you have to jump through
+  additional hoops
+
+  I have selected `efont` as a Pango font name in the `vater` source.
+  FontConfig maps all bitmap fonts to `Fixed`, so you need additional
+  configuration settings in your `~/.config/fontconfig/fonts.conf` for
+  this to work.  See the generated `fonts.conf` file for a possible
+  solution.  Beware of all the hardcoded paths in there (should work
+  with at least Ubuntu and the `xfonts-efont-unicode` package).
+  Because I don't see how to distinguish between normal and wide
+  characters in FontConfig, only normal characters are mapped to
+  `efont`: the `h*.pcf.gz` files are used, while `f*.pcf.gz` are
+  skipped.  This leaves all Japanese characters in a non-bitmapped
+  font which actually does not look too shabby for my tastes ;-)
+
 
 bugs/todos
 ----------
