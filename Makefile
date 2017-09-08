@@ -11,6 +11,9 @@ compile: $(BINARY)
 install: compile
 	install -t ~/bin $(BINARY)
 
+uninstall:
+	rm ~/bin/$(BINARY)
+
 $(BINARY): $(SOURCES)
 	$(VALAC) -o $(BINARY) $(VALAFLAGS) $(SOURCES)
 
