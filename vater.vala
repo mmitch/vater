@@ -1,9 +1,6 @@
 class Vater : GLib.Object {
 	private static void setFont(Vte.Terminal terminal) {
-		terminal.set_font (Pango.FontDescription.from_string ("efont" ) );
-//		terminal.set_font (Pango.FontDescription.from_string ("PxPlus IBM CGAthin regular 8px" ) );
-//		terminal.set_font (Pango.FontDescription.from_string ("PxPlus IBM VGA9 regular 10px" ) );
-//		terminal.set_font (Pango.FontDescription.from_string ("Px437 IBM 3270pc regular 16px" ) );
+		terminal.set_font (Pango.FontDescription.from_string ("BiWidth" ) );
 	}
 
 	private static void setWordSelection(Vte.Terminal terminal) {

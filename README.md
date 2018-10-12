@@ -17,12 +17,26 @@ installation
   it will compile `vater` and try to install it into `~/bin`, so you
   should a) have that directory and b) have it in your `$PATH`
 
-* for bitmap fonts to work, you propably have to tweak your Fontconfig
+
+font selection
+--------------
+
+* `vater` uses the `efont` bitmap fonts by default
+
+  You can change this by setting another font in the `setFont()`
+  method.  If you want to use `efont`, read on:
+
+* install the `efont` font
+
+  On Debian and Ubuntu, it's in the `xfonts-efont-unicode` and
+  `xfonts-efont-unicode-ib` packages.  Otherwise see [efont].
+
+* for bitmap fonts to work, you might have to tweak your Fontconfig
   settings
 
   Bitmap fonts are mostly deactivated by default (eg. Ubuntu has
   `/etc/fonts/conf.d/70-no-bitmaps.conf`).  Activating *all* the
-  bitmap fonts could lead to problems, so just activate the `fixed`
+  bitmap fonts could lead to problems, so just activate the `efont`
   font family by creating a configuration file
   `/etc/fonts/conf.d/99-enable-fixed-bitmap.conf` and run `fc-cache`
   afterwards or restart your X session (based on [this idea]).
@@ -36,7 +50,7 @@ installation
     <acceptfont>
       <pattern>
         <patelt name="family">
-          <string>fixed</string>
+          <string>BiWidth</string>
         </patelt>
       </pattern>
     </acceptfont>
@@ -44,20 +58,9 @@ installation
 </fontconfig>
 ```
 
-* to enable the `efont` bitmap font family, you have to jump through
-  additional hoops
-
-  I have selected `efont` as a Pango font name in the `vater` source.
-  FontConfig maps all bitmap fonts to `Fixed`, so you need additional
-  configuration settings in your `~/.config/fontconfig/fonts.conf` for
-  this to work.  See the generated `fonts.conf` file for a possible
-  solution.  Beware of all the hardcoded paths in there (should work
-  with at least Ubuntu and the `xfonts-efont-unicode` package).
-  Because I don't see how to distinguish between normal and wide
-  characters in FontConfig, only normal characters are mapped to
-  `efont`: the `h*.pcf.gz` files are used, while `f*.pcf.gz` are
-  skipped.  This leaves all Japanese characters in a non-bitmapped
-  font which actually does not look too shabby for my tastes ;-)
+* no, I don't know why Fontconfig insists on calling `efont` `BiWidth`
+  
+  But I'm happy that it works!  Took long enough...
 
 
 bugs/todos
