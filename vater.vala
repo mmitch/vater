@@ -4,7 +4,7 @@ class Vater : GLib.Object {
 	}
 
 	private static void setWordSelection(Vte.Terminal terminal) {
-		terminal.set_word_char_exceptions ( "-/@_&.:?" );
+		terminal.set_word_char_exceptions ( "-/@_&.:?=" );
 	}
 
 	public static int main(string[] args) {
