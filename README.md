@@ -23,8 +23,9 @@ font selection
 
 * `vater` uses the `efont` bitmap fonts by default
 
-  You can change this by setting another font in the `setFont()`
-  method.  If you want to use `efont`, read on:
+  You can change this by setting the environment variable `VATER_FONT`
+  to a string understood by Fontconfig.  If you want to use `efont`,
+  read on:
 
 * install the `efont` font
 

@@ -1,6 +1,8 @@
 class Vater : GLib.Object {
+
 	private static void setFont(Vte.Terminal terminal) {
-		terminal.set_font (Pango.FontDescription.from_string ("BiWidth" ) );
+		var font = GLib.Environment.get_variable ("VATER_FONT") ?? "BiWidth";
+		terminal.set_font (Pango.FontDescription.from_string ( font ) );
 	}
 
 	private static void setWordSelection(Vte.Terminal terminal) {
