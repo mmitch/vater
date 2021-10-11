@@ -18,14 +18,27 @@ installation
   should a) have that directory and b) have it in your `$PATH`
 
 
+configuration
+-------------
+
+At startup, `vater` looks for these environment variables:
+
+* `VATER_FONT` controls the font to use.  It is passed to Fontconfig,
+  so a valid value should look something like `Noto Mono 11`.
+
+* `VATER_SELECT_TO_CLIPBOARD` controls selection mode.  By default,
+  selected text is only copied to the X11 primary selection.  If
+  `VATER_SELECT_TO_CLIPBOARD` is set to `1`, selected text is
+  additionally copied to the X11 clipboard.
+
+
 font selection
 --------------
 
 * `vater` uses the `efont` bitmap fonts by default
 
-  You can change this by setting the environment variable `VATER_FONT`
-  to a string understood by Fontconfig.  If you want to use `efont`,
-  read on:
+  You can change the default font by setting the environment variable
+  `VATER_FONT` (see above).  If you want to use `efont`, read on:
 
 * install the `efont` font
 

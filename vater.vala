@@ -1,5 +1,23 @@
 class Vater : GLib.Object {
 
+	private static bool selectToClipboard() {
+		var setting = GLib.Environment.get_variable ("VATER_SELECT_TO_CLIPBOARD") ?? "0";
+		return setting == "1";
+	}
+
+	private static void writeToClipboard(Gtk.Clipboard from, string? text) {
+		if (text == null) {
+			return;
+		}
+		var clipboard = Gtk.Clipboard.get (Gdk.SELECTION_CLIPBOARD);
+		clipboard.set_text (text, -1);
+	}
+
+	private static void copySelectionToClipboard(Vte.Terminal terminal) {
+		var primary = Gtk.Clipboard.get (Gdk.SELECTION_PRIMARY);
+		primary.request_text (writeToClipboard);
+	}
+
 	private static double byteToDouble(uint byte) {
 		return byte / 255.0;
 	}
@@ -73,6 +91,9 @@ class Vater : GLib.Object {
 		/* Connect some signals */
 		win.destroy.connect (Gtk.main_quit);
 		terminal.child_exited.connect (Gtk.main_quit);
+		if (selectToClipboard()) {
+			terminal.selection_changed.connect (copySelectionToClipboard);
+		}
 		
 		/* Put widgets together and run the main loop */
 		win.add (terminal);
