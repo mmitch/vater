@@ -1,0 +1,25 @@
+---
+name: Linux Build
+
+on:
+  push:
+  pull_request:
+    types: [opened]
+  schedule:
+    - cron: '34 5 * * 6'
+
+jobs:
+  build-linux:
+    name: Build on Linux
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install valac libvte-2.91-dev
+    - name: Build 
+      run: |
+        make compile

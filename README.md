@@ -1,6 +1,8 @@
 vater – Vala terminal emulator
 ==============================
 
+[![Linux Build status](https://github.com/mmitch/vater/workflows/Linux%20Build/badge.svg?branch=master)](https://github.com/mmitch/vater/actions?query=workflow%3A%22Linux+Build%22)
+
 `vater` is a small terminal emulator written in [Vala].  It is mostly
 using on the [VTE] library which provides the terminal emulator and
 just configures it in the way I want.
@@ -97,13 +99,6 @@ bugs/todos
 
   This is a Github project, so why keep a list of issues in the
   README?  Just add them as Github issues ;-)
-
-* add TravisCI build
-
-  No unit tests, but a plain “is the build broken?” check.  [TravisCI]
-  does not support Vala, but it should be possible to just
-  `apt-install valac` (with cacheing, we want to be nice) and then run
-  the `Makefile`.
 
 
 [Vala]: https://wiki.gnome.org/Projects/Vala
