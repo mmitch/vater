@@ -51,7 +51,7 @@ class Vater : GLib.Object {
 	}
 
 	private static void setFont(Vte.Terminal terminal) {
-		var font = GLib.Environment.get_variable ("VATER_FONT") ?? "BiWidth";
+		var font = GLib.Environment.get_variable ("VATER_FONT") ?? "Noto Mono 11";
 		terminal.set_font (Pango.FontDescription.from_string ( font ) );
 	}
 

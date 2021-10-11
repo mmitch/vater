@@ -24,7 +24,8 @@ configuration
 At startup, `vater` looks for these environment variables:
 
 * `VATER_FONT` controls the font to use.  It is passed to Fontconfig,
-  so a valid value should look something like `Noto Mono 11`.
+  so a valid value should look something like `Noto Mono 11` (which
+  currently is the default font).
 
 * `VATER_SELECT_TO_CLIPBOARD` controls selection mode.  By default,
   selected text is only copied to the X11 primary selection.  If
@@ -32,13 +33,13 @@ At startup, `vater` looks for these environment variables:
   additionally copied to the X11 clipboard.
 
 
-font selection
---------------
+bitmap font selection
+---------------------
 
-* `vater` uses the `efont` bitmap fonts by default
-
-  You can change the default font by setting the environment variable
-  `VATER_FONT` (see above).  If you want to use `efont`, read on:
+`vater` was originally designed to use the `efont` bitmap fonts.  This
+gets harder and harder as classical bitmap fonts managed by the X
+server are not en vogue any more.  My last success using `efont`
+worked like this:
 
 * install the `efont` font
 
@@ -72,9 +73,11 @@ font selection
 </fontconfig>
 ```
 
+* set `VATER_FONT` to `BiWidth`
+
 * no, I don't know why Fontconfig insists on calling `efont` `BiWidth`
   
-  But I'm happy that it works!  Took long enough...
+  But I'm happy that it worked!  Took long enough...
 
 
 bugs/todos
