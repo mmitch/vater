@@ -1,5 +1,37 @@
 class Vater : GLib.Object {
 
+	private static double byteToDouble(uint byte) {
+		return byte / 255.0;
+	}
+
+	private static Gdk.RGBA rgb(uint r, uint g, uint b) {
+		return { byteToDouble (r), byteToDouble (g), byteToDouble (b), 0 };
+	}
+
+	private static void setColors(Vte.Terminal terminal) {
+		Gdk.RGBA[] palette = {
+			rgb( 0x00, 0x00, 0x00 ),
+			rgb( 0xd0, 0x00, 0x00 ),
+			rgb( 0x00, 0xd0, 0x00 ),
+			rgb( 0xd0, 0xd0, 0x00 ),
+			rgb( 0x70, 0x70, 0xd0 ),
+			rgb( 0xd0, 0x00, 0xd0 ),
+			rgb( 0x00, 0xd0, 0xd0 ),
+			rgb( 0xd0, 0xd0, 0xd0 ),
+			rgb( 0x80, 0x80, 0x80 ),
+			rgb( 0xf0, 0x00, 0x00 ),
+			rgb( 0x00, 0xf0, 0x00 ),
+			rgb( 0xf0, 0xf0, 0x00 ),
+			rgb( 0x80, 0x80, 0xf0 ),
+			rgb( 0xf0, 0x00, 0xf0 ),
+			rgb( 0x00, 0xf0, 0xf0 ),
+			rgb( 0xf0, 0xf0, 0xf0 ),
+		};
+
+		terminal.set_colors (null, null, palette);
+		terminal.set_bold_is_bright (true);
+	}
+
 	private static void setFont(Vte.Terminal terminal) {
 		var font = GLib.Environment.get_variable ("VATER_FONT") ?? "BiWidth";
 		terminal.set_font (Pango.FontDescription.from_string ( font ) );
@@ -34,6 +66,7 @@ class Vater : GLib.Object {
 		}
 		
 		/* individualization */
+		setColors (terminal);
 		setFont (terminal);
 		setWordSelection (terminal);
 

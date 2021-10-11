@@ -89,10 +89,6 @@ bugs/todos
   `apt-install valac` (with cacheing, we want to be nice) and then run
   the `Makefile`.
 
-* terminal colors
-
-  default/white is not white enough, it's more of a light bluish grey
-
 
 [Vala]: https://wiki.gnome.org/Projects/Vala
 [VTE]: https://wiki.gnome.org/Apps/Terminal/VTE
