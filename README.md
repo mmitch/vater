@@ -1,7 +1,7 @@
 vater – Vala terminal emulator
 ==============================
 
-[![Linux Build status](https://github.com/mmitch/vater/workflows/Linux%20Build/badge.svg?branch=master)](https://github.com/mmitch/vater/actions?query=workflow%3A%22Linux+Build%22)
+[![Linux Build status](https://github.com/mmitch/vater/workflows/Linux%20Build/badge.svg)](https://github.com/mmitch/vater/actions?query=workflow%3A%22Linux+Build%22)
 
 `vater` is a small terminal emulator written in [Vala].  It is mostly
 using on the [VTE] library which provides the terminal emulator and
